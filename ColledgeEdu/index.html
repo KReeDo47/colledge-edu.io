@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CollegeEdu - Открытый образовательный ресурс</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>CollegeEdu</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#courses" class="active">Курсы</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Поиск курсов...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-container">
+                <h1>Откройте для себя мир знаний</h1>
+                <p>Бесплатные курсы для студентов и всех желающих. Учитесь в удобное время с любого устройства.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-text">Курсов</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50K+</span>
+                        <span class="stat-text">Студентов</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-text">Завершаемость</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="filters-section">
+            <div class="container">
+                <h2>Найдите свой курс</h2>
+                <div class="filters">
+                    <div class="filter-group">
+                        <label>Категория:</label>
+                        <select id="categoryFilter">
+                            <option value="">Все категории</option>
+                            <option value="programming">Программирование</option>
+                            <option value="design">Дизайн</option>
+                            <option value="business">Бизнес</option>
+                            <option value="languages">Языки</option>
+                            <option value="science">Наука</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Уровень:</label>
+                        <select id="levelFilter">
+                            <option value="">Все уровни</option>
+                            <option value="beginner">Начальный</option>
+                            <option value="intermediate">Средний</option>
+                            <option value="advanced">Продвинутый</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Длительность:</label>
+                        <select id="durationFilter">
+                            <option value="">Любая</option>
+                            <option value="short">1-4 недели</option>
+                            <option value="medium">1-3 месяца</option>
+                            <option value="long">3+ месяцев</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="courses-section">
+            <div class="container">
+                <div class="courses-grid" id="coursesGrid">
+                    <!-- Курсы будут загружаться динамически -->
+                </div>
+                <div class="load-more">
+                    <button id="loadMoreBtn" class="btn btn-secondary">Загрузить еще</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section" id="about">
+            <div class="container">
+                <h2>О платформе CollegeEdu</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>CollegeEdu - это открытая образовательная платформа, созданная для студентов колледжей и всех, кто хочет развиваться в различных областях знаний.</p>
+                        <p>Мы предлагаем качественные курсы от преподавателей ведущих вузов, практические задания и сертификаты о прохождении.</p>
+                        <ul>
+                            <li>✓ Бесплатное обучение</li>
+                            <li>✓ Гибкий график</li>
+                            <li>✓ Сертификаты</li>
+                            <li>✓ Сообщество студентов</li>
+                        </ul>
+                    </div>
+                    <div class="about-image">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjZjNmNGY2Ii8+CjxwYXRoIGQ9Ik0yMDAgODBMMzIwIDE2MEgyNTBMMjUwIDI0MEgyNTBMMjUwIDE2MEgxMjBMMjAwIDgwWiIgc3Ryb2tlPSIjNjM2NmYxIiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9IiM2MzY2ZjEiIG9wYWNpdHk9IjAuMyIvPgo8Y2lyY2xlIGN4PSIxNTAiIGN5PSIxNDAiIHI9IjMwIiBmaWxsPSIjZmY2YjZiIi8+CjxjaXJjbGUgY3g9IjI1MCIgY3k9IjE0MCIgcj0iMzAiIGZpbGw9IiNmZjZiNmIiLz4KPGNpcmNsZSBjeD0iMjAwIiBjeT0iMTgwIiByPSIzMCIgZmlsbD0iI2ZmNmI2YiIvPgo8L3N2Zz4K" alt="Обучение">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <div class="container">
+                <h2>Свяжитесь с нами</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@collegeedu.ru</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+7 (495) 123-45-67</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Москва, Россия</span>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <input type="text" id="name" placeholder="Ваше имя" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" placeholder="Email" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" placeholder="Сообщение" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Отправить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Модальное окно для курса -->
+    <div id="courseModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="courseDetail">
+                <!-- Детали курса будут загружаться динамически -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>CollegeEdu</span>
+                    </div>
+                    <p>Открытая образовательная платформа для всех желающих.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="#courses">Курсы</a></li>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Поддержка</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Помощь</a></li>
+                        <li><a href="#">Техническая поддержка</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CollegeEdu. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
